@@ -58,7 +58,11 @@ pipeline {
                     }
                     post {
                         always {
-                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Playwright HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+                            publishHTML([
+                                reportDir: 'playwright-report',
+                                reportFiles: 'index.html',
+                                reportName: 'Playwright HTML Report'
+                            ])
                         }
                     }
                 }
@@ -69,7 +73,7 @@ pipeline {
                 docker {
                     image 'node:18-alpine'
                     reuseNode true
-                }
+                }   
             }
             steps {
                 sh '''
